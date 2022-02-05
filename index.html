@@ -21,20 +21,21 @@
     <form>
         <div class="form-group col-5">
             <!--LINK-->
-            <label for="Link" class='link_title'>Amazon Link </label>
-            <input type="email" class="form-control" id="Link" aria-describedby="emailHelp" placeholder="Enter link">
+            <label for="Link" class='title link_title'>Amazon Link </label>
+            <input type="link" class="form-control" id="Link"  placeholder="Enter link">
         </div>
 
         <!--Price range-->
-        <div class="form-group max_cost">
-            <label>Maximum Cost</label>
+        <div class="form-group">
+            <label class="title">Maximum Cost</label>
              <div class="slidecontainer">
                 <input type="range" min="1" max="100" value="10" class="slider" id="myRange">
             </div>
             <p class = 'price_outer'>Value: ₹<span id="price" class = 'price_outer'></span></p>
         </div>
         <!--Submit Button-->
-        <button type="submit" class="btn-lg btn-primary">Submit</button>
+        <button type="submit" class="btn-lg btn-primary button">Save</button>
+
     </form>
     <script>
         var slider = document.getElementById("myRange");

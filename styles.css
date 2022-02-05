@@ -13,9 +13,14 @@
 
 /*Link Title*/
 .form-group{
-    padding : 10px 0px 30px 0px  ;
+    padding : 10px 0 30px 0  ;
 
 }
+.title {
+    position: relative;
+    left: 30px ;
+}
+
 .link_title{
     padding-bottom: 10px ;
 }
@@ -27,7 +32,7 @@
 /*Slider*/
 .slider {
     -webkit-appearance: none;
-    width: 100%;
+    width: 85%;
     height: 25px;
     background: #d3d3d3;
     outline: none;
@@ -60,4 +65,11 @@
 /*Price*/
 .price_outer{
     font-size: x-large;
+    padding-top : 20px ;
+}
+/*Button*/
+.button{
+    position: relative ;
+    left : 80px ;
+    padding : 10px 50px 10px 50px ;
 }
