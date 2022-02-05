@@ -1,0 +1,87 @@
+/*Top stuff */
+body{
+    font-family: 'Rubik', sans-serif;
+    background-color: #EEEEEE;
+    color:#FBF8F1;
+    background-image: url('../imgs/book.jpg'); /*Photo credits to : Chris Lawton*/
+    background-size: cover;
+}
+.Parent{
+    padding : 30px  ;
+    font-size: xx-large;
+
+}
+
+.parent_down{
+    padding: 20px 0 0 40px  ;
+    position: relative;
+    top : 60px  ;
+
+}
+
+/*Link Title*/
+.form-group{
+    padding : 10px 0 30px 0  ;
+
+}
+.title {
+    position: relative;
+    left: 30px ;
+}
+
+.link_title{
+    padding-bottom: 10px ;
+}
+/*Max Cost*/
+
+
+
+
+/*Slider*/
+.slider {
+    -webkit-appearance: none;
+    width: 85%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+.slidecontainer {
+    width: 50%;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background:#FFD369;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #FFD369;
+    cursor: pointer;
+}
+/*Price*/
+.price_outer{
+    font-size: x-large;
+    padding-top : 20px ;
+}
+/*Button*/
+.button{
+    position : relative ;
+    left : 170px;
+    padding : 10px 50px 10px 50px ;
+    background-color :#212121  ;
+}
+.button:hover{
+    background-color : #6D9886 ;
+}
