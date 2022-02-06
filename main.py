@@ -5,20 +5,26 @@ import messaging
 app = Flask(__name__)
 link = str()
 price = 0
+book_names, book_prices = [], list()
 
 
 def amazon(url_link: str):
+    global book_names, book_prices
     amazon_data = a_scrape.Amazon_Scrape(url=url_link)
-    print(amazon_data.bookname)
+    book_names.append(amazon_data.bookname)
+    book_prices.append(amazon_data.price)
 
 
 @app.route('/', methods=["POST", "GET"])
 def main_pg():
-    if request.method == 'POST':
+    global book_names
+    if request.method == 'POST' and len(request.form['link_text']) != 0:
         link, price = request.form['link_text'], request.form['value']
         amazon(url_link=f'{link}')
-        return render_template('index.html')
+        return render_template('index.html', titles=book_names )
+
     else:
+        book_names = []
         return render_template('index.html')
 
 

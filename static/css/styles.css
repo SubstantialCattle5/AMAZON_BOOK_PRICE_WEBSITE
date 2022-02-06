@@ -40,7 +40,7 @@ body{
 /*Slider*/
 .slider {
     -webkit-appearance: none;
-    width: 85%;
+    width: 120% ;
     height: 25px;
     background: #d3d3d3;
     outline: none;
@@ -79,8 +79,6 @@ body{
 }
 /*Button*/
 .button{
-    position : relative ;
-    left : 170px;
     padding : 10px 50px 10px 50px ;
     background-color :#483434  ;
     color : white ;
@@ -89,3 +87,4 @@ body{
     background-color : #FFF3E4 ;
     color : #483434;
 }
+
