@@ -18,23 +18,24 @@
 <div class = 'Parent'>
     <h1 class = 'Title d-flex justify-content-center'>Amazon Book Checker</h1>
 <div class = 'parent_down'>
-    <form>
+    <form action ='#' method = 'post'>
         <div class="form-group col-5">
             <!--LINK-->
             <label for="Link" class='title link_title'>Amazon Link </label>
-            <input type="link" class="form-control" id="Link"  placeholder="Enter link">
+
+            <input type="text" class="form-control" id="Link"  placeholder="Enter link" name = 'link_text'>
         </div>
 
         <!--Price range-->
         <div class="form-group">
             <label class="title">Maximum Cost</label>
              <div class="slidecontainer">
-                <input type="range" min="1" max="100" value="10" class="slider" id="myRange">
+                <input type="range" min="1" max="100" value="10" class="slider" id="myRange" name="value">
             </div>
             <p class = 'price_outer'>Value: ₹<span id="price" class = 'price_outer'></span></p>
         </div>
         <!--Submit Button-->
-        <button type="submit" class="btn-lg  button" style = 'color : white; '>Save</button>
+        <button type="submit" class="btn-lg  button" value ='submit'>Save</button>
 
     </form>
     <!--JavaScript MumboJumbo-->

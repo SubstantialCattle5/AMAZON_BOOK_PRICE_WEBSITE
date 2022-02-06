@@ -73,15 +73,19 @@ body{
 /*Price*/
 .price_outer{
     font-size: x-large;
-    padding-top : 20px ;
+    padding-top : 30px ;
+    color:#FBF8F1;
+
 }
 /*Button*/
 .button{
     position : relative ;
     left : 170px;
     padding : 10px 50px 10px 50px ;
-    background-color :#212121  ;
+    background-color :#483434  ;
+    color : white ;
 }
 .button:hover{
-    background-color : #6D9886 ;
+    background-color : #FFF3E4 ;
+    color : #483434;
 }
