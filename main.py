@@ -17,21 +17,21 @@ def book_names_list(links):
 
 @app.route('/', methods=["POST", "GET"])
 def main_pg():
-    global book_names , max_book_prices
+    global book_names, max_book_prices
     # POST is for buttons save and submit
     if request.method == 'POST':
         # Save Button , passing value should not be zero
         if request.form.get('save') == 'Save' and len(request.form['link_text']) != 0:
             link, price = request.form['link_text'], request.form['value']
-            book_names = book_names + [book_names_list(link)] # Creating the list
-            max_book_prices = max_book_prices + [int(price)*10]
-            print(max_book_prices, type(int(price)))
+            book_names = book_names + [book_names_list(link)]  # Creating the list
+            max_book_prices = max_book_prices + [int(price) * 10]
 
             return render_template('index.html', titles=book_names)
 
         # Submit button
         elif request.form.get('Submit') == 'submit_':
             return render_template('index.html')
+
 
         # Save button but length is not equal to zero
         else:

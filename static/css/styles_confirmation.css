@@ -1,0 +1,21 @@
+/*Common for all*/
+body{
+    font-family: 'Rubik', sans-serif ;
+
+}
+/*Title*/
+.title{
+    padding-top : 25px ;
+    font-size: xxx-large;
+}
+
+
+
+/*Base*/
+.container{
+    padding : 60px ;
+}
+.column{
+    padding-top : 15px ;
+    font-size :xx-large ;
+}
