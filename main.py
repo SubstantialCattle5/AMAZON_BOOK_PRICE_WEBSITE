@@ -18,11 +18,15 @@ def amazon(url_link: str):
 @app.route('/', methods=["POST", "GET"])
 def main_pg():
     global book_names
-    if request.method == 'POST' and len(request.form['link_text']) != 0:
-        link, price = request.form['link_text'], request.form['value']
-        amazon(url_link=f'{link}')
-        return render_template('index.html', titles=book_names )
-
+    if request.method == 'POST' :
+        if request.form.get('save') == 'Save' and len(request.form['link_text']) != 0:
+            link, price = request.form['link_text'], request.form['value']
+            amazon(url_link=f'{link}')
+            print('hello')
+            return render_template('index.html', titles=book_names)
+        elif request.form.get('Submit') == 'submit_':
+            print('save')
+            return render_template('index.html')
     else:
         book_names = []
         return render_template('index.html')
