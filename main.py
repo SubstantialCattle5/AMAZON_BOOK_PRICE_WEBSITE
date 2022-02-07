@@ -1,9 +1,11 @@
-import json
+import os
 from flask import *
 import firebase_admin
 from firebase_admin import db
 from amazon_link_regex import Amazon_Link_Regex
+from dotenv import load_dotenv  # pip install python-dotenv
 
+load_dotenv("E:\PROJECTS\python\local_env\\amazon_book\\.env.txt")
 app = Flask(__name__)
 link = str()
 price = 0
@@ -14,7 +16,7 @@ book_links = list()
 # FireBase stuff
 cred_obj = firebase_admin.credentials.Certificate('E:\PROJECTS\FIREBASE\\test\\test-project.json')
 default_app = firebase_admin.initialize_app(cred_obj, {
-    'databaseURL': 'https://test-project-5aa48-default-rtdb.asia-southeast1.firebasedatabase.app/'})
+    'databaseURL': os.getenv('firebaseurl')})
 
 
 # Extracting the book names from the link
