@@ -1,7 +1,7 @@
 import json
 
 from flask import Flask, render_template, request, redirect, url_for
-import a_scrape
+
 from amazon_link_regex import Amazon_Link_Regex
 
 app = Flask(__name__)
@@ -20,14 +20,15 @@ def book_names_list(links):
 
 
 # Amazon JSON dump
-
 def amazon_json_dump():
     data = dict()
     with open('amazon_book_links.json', 'w') as filehandle:
-        for i, j in zip(book_links, max_book_prices):
-            data[j] = i
+        # To avoid passsing empty list
+        if len(book_links) != 0:
+            for i, j in zip(book_links, max_book_prices):
+                data[j] = i
 
-        json.dump(data, filehandle, indent=4)
+            json.dump(data, filehandle, indent=4)
 
 
 @app.route('/', methods=["POST", "GET"])
@@ -51,7 +52,7 @@ def main_pg():
             return render_template('index.html')
 
     else:  # clearing the page
-        book_names, book_links = [], []
+        book_names, book_links = [], []  # clearing the list
         return render_template('index.html')
 
 
