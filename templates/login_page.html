@@ -1,53 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>BookPriceUpdate!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../static/css/styles.css" rel = 'stylesheet'>
+    <title>PriceBookCheck!</title>
 </head>
-<!--Fonts-->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link href="../static/css/styles_login.css" rel = 'stylesheet'>
 <body>
-<section class="vh-100">
-    <div class="container-fluid">
+
+<div class = 'Parent'>
+    <h1 class = 'Title d-flex justify-content-center'>Amazon Book Checker</h1>
+<div class = 'parent_down'>
+
+
+    <!--JavaScript MumboJumbo-->
+    <div class="container">
         <div class="row">
-            <div class="col-sm-6 text-black">
+            <div class="col-lg-6 col-sm-12">
+                <form action ='#' method = 'post'>
+                    <div class="form-group col-7">
+                         <!--UserName-->
+                        <label for="User_name" class='title link_title'>Username</label>
+                        <input type="text" class="form-control" id="User_name"  placeholder="Enter Username" name = 'User_name'>
 
-                <div class="px-5 ms-xl-4">
-                    <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
 
-                </div>
-
-                <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-
-                    <form style="width: 23rem; margin-top: 100px ; color : white ;" >
-
-                        <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
-
-                        <div class="form-outline mb-4">
-                            <input type="email" id="form2Example18" class="form-control form-control-lg" />
-                            <label class="form-label" for="form2Example18">Email address</label>
-                        </div>
+                    </div>
 
 
 
-                        <div class="pt-1 mb-4">
-                            <button class="btn btn-outline-light btn-lg btn-block" type="button">Login</button>
-                        </div>
+                    <!--Submit Button-->
+                    <div class ='container'>
+                        <div class ='row'>
+                            <div class = 'col-lg-6 col-sm-12'> <button type="submit" class="btn-lg  button" value ='Login' name ='login'>Save</button> </div>
+                            </div>
+                    </div>
 
-
-                    </form>
-
-                </div>
-
+                </form>
             </div>
 
         </div>
     </div>
-</section>
+    <script>
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("price");
+        output.innerHTML = slider.value;
+        slider.oninput = function() {
+            output.innerHTML = this.value * 10;
+        }
+    </script>
+
+</div>
+
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
 </body>
 </html>

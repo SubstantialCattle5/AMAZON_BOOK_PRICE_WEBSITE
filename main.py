@@ -7,7 +7,7 @@ from amazon_link_regex import Amazon_Link_Regex
 app = Flask(__name__)
 link = str()
 price = 0
-book_names, max_book_prices, user_names = list(), list(), list()
+book_names, max_book_prices, user_name = list(), list(), str()
 book_ = dict()
 book_links = list()
 
@@ -30,23 +30,44 @@ def amazon_firebase_dump():
     # To avoid passing empty list
     if len(book_links) != 0:
         # Creating a dict
-        for book_link, max_book_price, user_name in zip(book_links, max_book_prices, user_names):
-            data[user_name] = [book_link, max_book_price]
+        for i, (book_link, max_book_price) in enumerate(zip(book_links, max_book_prices)):
+            data[i] = [book_link, max_book_price]
         # Uploading the data to firebase
         print(data)
+
         for i in data:
-            ref = db.reference(f"/{i}")
-            ref.set(data[i])
+            # fixing 1 book data
+            if len(data) == 1:
+                ref = db.reference(f'{user_name}/{i}')
+                ref.set(data[i])
+                break
+            else:
+                ref = db.reference(f'/{user_name}/{i}')
+                ref.set(data[i])
 
 
 @app.route('/', methods=["POST", "GET"])
+def login():
+    if request.method == 'POST':
+        global user_name
+        # Save Button , passing value should not be zero
+        if request.form.get('login') == 'Login' and len(request.form['User_name']) != 0:
+            user_name = request.form.get('User_name')
+
+            return redirect(url_for('main_pg'))
+        else:
+            return render_template('login_page.html')
+    else:
+        return render_template('login_page.html')
+
+
+@app.route('/main', methods=["POST", "GET"])
 def main_pg():
-    global book_names, max_book_prices, book_links, user_names
+    global book_names, max_book_prices, book_links
     # POST is for buttons save and submit
     if request.method == 'POST':
         # Save Button , passing value should not be zero
         if request.form.get('save') == 'Save' and len(request.form['link_text']) != 0:
-            user_names = user_names + [request.form['User_name']]
             book_names = book_names + [book_names_list(request.form['link_text'])]  # Creating the list
             max_book_prices = max_book_prices + [int(request.form['value']) * 10]  # Creating price list
             book_links.append(request.form['link_text'])
@@ -74,7 +95,7 @@ def confirmation_pg():
     # Confirm Button
     if request.method == 'POST':
         if request.form.get('save') == 'Save':
-            if len(book_links) == 0 and len(max_book_prices) == 0 and len(user_names) == 0:
+            if len(book_links) == 0 and len(max_book_prices) == 0:
                 return render_template('confirmation.html', books=['ERROR! NO BOOKS SAVED'])
             else:
                 amazon_firebase_dump()
