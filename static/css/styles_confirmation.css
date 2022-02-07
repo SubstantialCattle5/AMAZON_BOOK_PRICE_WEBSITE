@@ -1,12 +1,16 @@
 /*Common for all*/
 body{
     font-family: 'Rubik', sans-serif ;
+    background-image: url('../imgs/book2.jpg');
+    background-size: cover;
+    color:#FBF8F1;
 
 }
 /*Title*/
 .title{
     padding-top : 25px ;
     font-size: xxx-large;
+
 }
 
 
@@ -19,3 +23,15 @@ body{
     padding-top : 15px ;
     font-size :xx-large ;
 }
+/*Button*/
+
+/*List*/
+.list{
+    color : #FFEDDB ;
+}
+.button{
+    padding : 10px 50px 10px 50px ;
+    background-color : #483434 ;
+    color : white ;
+}
+

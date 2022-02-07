@@ -22,15 +22,13 @@
 <div class="container">
     <!--Book List-->
     <div class="row">
-        <h2 class="title">Book List</h2>
+        <h2 class="title">Books List</h2>
         <div class="col-lg-6 col-md-12 column">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
+            <ul class="list-group list-group-flush list" >
+                {%for i in books%}
+                <li class="list-group-item bg-transparent" style = 'color:white'>{{ i }}</li>
+                {% endfor %}
+             </ul>
 
         </div>
         <div class="col-lg-5 col-md-12 column">
@@ -41,7 +39,7 @@
         <div class="col-lg-5 col-md-12">
         </div>
         <div class = 'col-lg-7 col-md-12'>
-            <button name = 'confirm' value = 'confirmation' class="button btn-lg btn-outline-success" style ='padding :10px 30px 10px 30px ; '>Confirm</button>
+            <form method = 'post'><button type="submit" class="btn-lg  button" value ='Save' name ='save'>Save</button></form>
         </div>
 
     </div>
