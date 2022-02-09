@@ -7,6 +7,7 @@ load_dotenv("E:\PROJECTS\python\local_env\\amazon_book\\.env.txt")
 from a_scrape import Amazon_Scrape
 from messaging import Messaging
 
+
 text = '\u20b9'
 
 # FireBase stuff
@@ -19,6 +20,7 @@ best_sellers = ref.get()
 
 for i in list(best_sellers.keys()):
     for j, k in enumerate(best_sellers[i]):
+        print(k)
         amazon_scrape = Amazon_Scrape(k[0])
         data = f'''Book : {amazon_scrape.bookname}
         Author : {amazon_scrape.author}
