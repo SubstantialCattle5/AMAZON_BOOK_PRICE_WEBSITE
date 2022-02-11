@@ -1,4 +1,6 @@
 import os
+from typing import List, Any
+
 from flask import *
 import firebase_admin
 from firebase_admin import db
@@ -7,11 +9,14 @@ from dotenv import load_dotenv  # pip install python-dotenv
 
 load_dotenv("E:\PROJECTS\python\local_env\\amazon_book\\.env.txt")
 app = Flask(__name__)
-link = str()
-price = 0
-book_names, max_book_prices, user_name = list(), list(), str()
-book_ = dict()
+
+# Store book related stuff
+book_names, max_book_prices = list(), list()
 book_links = list()
+
+# Password and Username variables
+user_name = str()
+password = str()
 
 # FireBase stuff
 cred_obj = firebase_admin.credentials.Certificate('E:\PROJECTS\FIREBASE\\test\\test-project.json')
@@ -51,16 +56,18 @@ def amazon_firebase_dump():
 @app.route('/', methods=["POST", "GET"])
 def login():
     if request.method == 'POST':
-        global user_name
+        global user_name, password
         # Save Button , passing value should not be zero
-        if request.form.get('login') == 'Login' and len(request.form['User_name']) != 0:
-            user_name = request.form.get('User_name')
+        if request.form.get('login') == 'Login' and len(request.form['User_name']) != 0 and len(
+                request.form['password']):
+            user_name, password = request.form.get('User_name'), request.form.get('password')
+            print(user_name)
 
             return redirect(url_for('main_pg'))
         else:
-            return render_template('login_page.html')
+            return render_template('login_pg2.html')
     else:
-        return render_template('login_page.html')
+        return render_template('login_pg2.html')
 
 
 @app.route('/main', methods=["POST", "GET"])
