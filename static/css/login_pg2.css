@@ -1,0 +1,27 @@
+body{
+    background-image: url('../imgs/login.jpg'); /*Photo by Gabriel Ghnassia */
+    font-family: 'Rubik', sans-serif;
+}
+.btn-color{
+    background-color: rgb(72, 52, 52);
+    color: #fff;
+
+}
+
+.profile-image-pic{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-color: rgb(238, 214, 196) ;
+}
+
+
+
+.cardbody-color{
+    background-color: rgb(238, 214, 196);
+
+}
+
+a{
+    text-decoration: none;
+}
