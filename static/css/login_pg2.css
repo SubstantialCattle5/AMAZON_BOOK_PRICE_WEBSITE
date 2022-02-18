@@ -1,10 +1,13 @@
 body{
-    background-image: url('../imgs/login.jpg'); /*Photo by Gabriel Ghnassia */
+    background-image: url('../imgs/book.jpg'); /*Photo credits to : Chris Lawton*/
+    background-size: cover;
     font-family: 'Rubik', sans-serif;
-}
+    background-color: #EEEEEE;
+   }
 .btn-color{
     background-color: rgb(72, 52, 52);
     color: #fff;
+    padding : 6px 12px 6px 12px ;
 
 }
 
@@ -17,11 +20,12 @@ body{
 
 
 
-.cardbody-color{
-    background-color: rgb(238, 214, 196);
 
-}
 
 a{
     text-decoration: none;
+}
+.form-control{
+    margin-top : 35px ;
+    padding : 6px 12px 6px 12px ;
 }
