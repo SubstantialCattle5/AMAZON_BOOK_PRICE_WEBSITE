@@ -1,11 +1,11 @@
 import os
-from typing import List, Any
 from flask import *
 import firebase_admin
 from firebase_admin import db
 from amazon_link_regex import Amazon_Link_Regex
-from dotenv import load_dotenv  # pip install python-dotenv
+from dotenv import load_dotenv
 import regex as re
+import json
 
 load_dotenv("E:\PROJECTS\python\local_env\\amazon_book\\.env.txt")
 app = Flask(__name__)
@@ -13,10 +13,11 @@ app = Flask(__name__)
 # Store book related stuff
 book_names, max_book_prices = list(), list()
 book_links = list()
+data2 = dict()
 
 # Password and Username variables
 user_name = str()
-password = str()
+email = str()
 
 # FireBase stuff
 cred_obj = firebase_admin.credentials.Certificate('E:\PROJECTS\FIREBASE\\test\\test-project.json')
@@ -40,17 +41,19 @@ def amazon_firebase_dump():
         for i, (book_link, max_book_price) in enumerate(zip(book_links, max_book_prices)):
             data[i] = [book_link, max_book_price]
         # Uploading the data to firebase
-        print(data)
+        data2 = {'email': email, 'data': data}
+        json_object = json.dumps(data2, indent=4)
+        # Writing to sample.json
+        with open("data.json", "w") as outfile:
+            outfile.write(json_object)
+        with open('data.json', 'r') as outfile:
+            json_load = json.load(outfile)
+            ref = db.reference(f'{user_name}')
+            ref.set(json_load)
 
-        for i in data:
-            # fixing 1 book data
-            if len(data) == 1:
-                ref = db.reference(f'{user_name}/{i}')
-                ref.set(data[i])
-                break
-            else:
-                ref = db.reference(f'/{user_name}/{i}')
-                ref.set(data[i])
+
+
+
 
 
 # --------------------------------------------HTML PAGES-------------------------------------------------------
@@ -58,7 +61,7 @@ def amazon_firebase_dump():
 @app.route('/', methods=["POST", "GET"])
 def login():
     if request.method == 'POST':
-        global user_name, password
+        global user_name, email
 
         # store the length of username and email to check the passing value
         value = len(request.form['User_name']) + len(request.form['email'])
