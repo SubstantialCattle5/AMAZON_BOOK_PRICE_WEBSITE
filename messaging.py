@@ -12,14 +12,6 @@ class Messaging:
         self.auth_token = os.getenv('token')
         self.client = Client(self.account_sid, self.auth_token)
 
-    def send(self, msg_stuff):
-        message = self.client.messages.create(
-            body=msg_stuff,
-            from_=os.getenv('sphone'),
-            to=os.getenv('phone'))
-        print()
-        print(message.status)
-
     def email(self, body_text):
         # Sender's email , subject  and body
         sender = os.getenv('remail')

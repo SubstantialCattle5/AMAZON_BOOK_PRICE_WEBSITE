@@ -1,11 +1,11 @@
 import os
 from typing import List, Any
-
 from flask import *
 import firebase_admin
 from firebase_admin import db
 from amazon_link_regex import Amazon_Link_Regex
 from dotenv import load_dotenv  # pip install python-dotenv
+import regex as re
 
 load_dotenv("E:\PROJECTS\python\local_env\\amazon_book\\.env.txt")
 app = Flask(__name__)
@@ -53,21 +53,23 @@ def amazon_firebase_dump():
                 ref.set(data[i])
 
 
+# --------------------------------------------HTML PAGES-------------------------------------------------------
+
 @app.route('/', methods=["POST", "GET"])
 def login():
     if request.method == 'POST':
         global user_name, password
         # Save Button , passing value should not be zero
-        if request.form.get('login') == 'Login' and len(request.form['User_name']) != 0 and len(
-                request.form['password']):
+        if request.form.get('login') == 'Login' and len(request.form['User_name']) != 0 :
             user_name, password = request.form.get('User_name'), request.form.get('password')
             print(user_name)
+            print(password)
 
             return redirect(url_for('main_pg'))
         else:
-            return render_template('login_pg2.html')
+            return render_template('login_pg.html')
     else:
-        return render_template('login_pg2.html')
+        return render_template('login_pg.html')
 
 
 @app.route('/main', methods=["POST", "GET"])
