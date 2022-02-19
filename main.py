@@ -59,13 +59,20 @@ def amazon_firebase_dump():
 def login():
     if request.method == 'POST':
         global user_name, password
-        # Save Button , passing value should not be zero
-        if request.form.get('login') == 'Login' and len(request.form['User_name']) != 0 :
-            user_name, password = request.form.get('User_name'), request.form.get('password')
-            print(user_name)
-            print(password)
 
+        # store the length of username and email to check the passing value
+        value = len(request.form['User_name']) + len(request.form['email'])
+
+        # to check if the username is a single digit
+        check = re.match('^[0-9]', request.form.get('User_name'))
+
+        # Save Button , passing value should not be zero
+        if request.form.get('login') == 'Login' and value >= 0 and not bool(check):
+            user_name, email = request.form.get('User_name'), request.form.get('email')
+            print(user_name)
+            print(email)
             return redirect(url_for('main_pg'))
+
         else:
             return render_template('login_pg.html')
     else:
@@ -101,14 +108,13 @@ def main_pg():
 def confirmation_pg():
     if len(book_names) == 0:
         books = ['No books saved yet!']
-    else:
-        books = book_names
     # Confirm Button
     if request.method == 'POST':
         if request.form.get('save') == 'Save':
             if len(book_links) == 0 and len(max_book_prices) == 0:
                 return render_template('confirmation.html', books=['ERROR! NO BOOKS SAVED'])
             else:
+                books = book_names
                 amazon_firebase_dump()
                 return render_template('confirmation.html', books=['Saved!'])
 
