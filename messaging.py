@@ -5,7 +5,6 @@ from dotenv import load_dotenv  # pip install python-dotenv
 load_dotenv("E:\PROJECTS\python\local_env\\amazon_book\\.env.txt")
 
 
-
 class Messaging:
     def __init__(self):
         self.account_sid = os.getenv('api')
@@ -19,8 +18,7 @@ class Messaging:
             sending = str()
             for data in (body_data[email]):
                 price = float(data['Price'][2:len(data['Price'])])
-                if price <= float(data['Decided Price']) or price >= float(
-                        data['Decided Price']):  # NOTE : REMOVE THE SECOND PART
+                if price <= float(data['Decided Price']):
                     send = f"""\n\nName : {data['Name']}\nToday's Price : Rs.{float(data['Price'][2:len(data['Price'])])}\nDecided Price: Rs.{data['Decided Price']}\nLink : {data['link']}"""
                     sending = sending + send
 
@@ -39,7 +37,3 @@ class Messaging:
                 connection.sendmail(from_addr=myemail,
                                     to_addrs=f'{email}',
                                     msg=f'Subject : {subject} \n\n {sending} ')
-
-
-
-
