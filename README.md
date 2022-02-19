@@ -31,4 +31,5 @@ Stores the data in a nosql database
 4. dotenv 
 5. json 
 6. regex
+7. smtp
 
