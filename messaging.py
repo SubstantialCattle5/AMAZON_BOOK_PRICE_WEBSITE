@@ -4,13 +4,6 @@ from dotenv import load_dotenv  # pip install python-dotenv
 
 load_dotenv("E:\PROJECTS\python\local_env\\amazon_book\\.env.txt")
 
-a = {'samless123@rediffmail.com': [
-    {'Name': ' Charlie and the Great Glass Elevator ', 'Price': ' ₹287.00 ', 'Decided Price': 100,
-     'link': 'https://www.amazon.in/Charlie-Great-Glass-Elevator-Fiction/dp/0141365382/ref=sr_1_1?keywords=roald+dahl+books&qid=1644111339&sprefix=roald+%2Caps%2C248&sr=8-1'}],
-    'samless274@gmail.com': [{'Name': ' 1984 ', 'Price': ' ₹154.00 ', 'Decided Price': 100,
-                              'link': 'https://www.amazon.in/1984-George-Orwell/dp/8192910903/ref=sr_1_3?crid=27SRFVXEKR4OX&keywords=1984&qid=1644108531&sprefix=1984%2Caps%2C258&sr=8-3'},
-                             {'Name': ' Animal Farm ', 'Price': ' ₹70.00 ', 'Decided Price': 100,
-                              'link': 'https://www.amazon.in/Animal-Farm-George-Orwell/dp/812911612X/ref=sr_1_3?crid=3UNXI00VXNY5O&keywords=animal+farm&qid=1644112139&sprefix=animal+farm%2Caps%2C260&sr=8-3'}]}
 
 
 class Messaging:
@@ -44,10 +37,9 @@ class Messaging:
                 connection.login(user=myemail, password=mypassword)
                 # sending the mail
                 connection.sendmail(from_addr=myemail,
-                                    to_addrs=f'{sender}',
+                                    to_addrs=f'{email}',
                                     msg=f'Subject : {subject} \n\n {sending} ')
 
 
 
-ab = Messaging()
-ab.email(a)
+

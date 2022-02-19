@@ -2,6 +2,9 @@ import os
 import firebase_admin
 from firebase_admin import db
 from dotenv import load_dotenv
+
+import messaging
+
 load_dotenv("E:\PROJECTS\python\local_env\\amazon_book\\.env.txt")
 from a_scrape import Amazon_Scrape
 
@@ -36,3 +39,5 @@ except AttributeError:
 
 # Emailing the user
 print(data)
+msg = messaging.Messaging()
+msg.email(data)
