@@ -1,12 +1,10 @@
 import os
 import firebase_admin
 from firebase_admin import db
-from dotenv import load_dotenv  # pip install python-dotenv
-import prettytable
-
+from dotenv import load_dotenv
 load_dotenv("E:\PROJECTS\python\local_env\\amazon_book\\.env.txt")
 from a_scrape import Amazon_Scrape
-from messaging import Messaging
+
 
 text = '\u20b9'
 
@@ -18,24 +16,23 @@ default_app = firebase_admin.initialize_app(cred_obj, {
 ref = db.reference("/")
 best_sellers = ref.get()
 
-# Pretty Table
-x = prettytable.PrettyTable()
-x.field_names = ["Book Name", "Author", "Cost"]
-
+data, book_names = dict(), list()
 try:
-    for i in list(best_sellers.keys()):
-        for j, k in enumerate(best_sellers[i]):
-            amazon_scrape = Amazon_Scrape(k[0])
-            try:
-                x.add_row([amazon_scrape.bookname, amazon_scrape.author, f'Rs.{amazon_scrape.price.split(text)[1]}'])
-            except IndexError:
-                print('error')
+    for best_seller in list(best_sellers.keys()):
+        email = best_sellers[best_seller]['email']
+        check = 0
+        for link in best_sellers[best_seller]['data']:
+            if check == 0:
+                book_names = list()
+            amazon = Amazon_Scrape(link[0])
+            amazon_book_data = {'Name': amazon.bookname, 'Price': amazon.price, 'Decided Price': link[1] , 'link' : link[0]}
+            book_names.append(amazon_book_data)
+            check+=1
+        data[email] = book_names
 
-# if the database doesn't has any saved books
+        # if the database doesn't have any saved books
 except AttributeError:
     print('No Saved Book!!!')
 
 # Emailing the user
-print(x)
-msg = Messaging()
-msg.email(body_text=x)
+print(data)

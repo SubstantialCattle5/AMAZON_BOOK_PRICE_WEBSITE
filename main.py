@@ -52,10 +52,6 @@ def amazon_firebase_dump():
             ref.set(json_load)
 
 
-
-
-
-
 # --------------------------------------------HTML PAGES-------------------------------------------------------
 
 @app.route('/', methods=["POST", "GET"])
